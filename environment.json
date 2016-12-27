@@ -1,0 +1,7 @@
+{
+	"hostname": "https://mainnet.infura.io/Z7tCSntEyYR7Fm0b4VdY",
+	"hostname_" : "http://faucet.ma.cx:8546/",
+	"hostname__": "http://localhost:8545",
+	"walletfile": "/Volumes/NAME/mywallet.json",
+	"gasprice": 41967171804
+}

@@ -1,0 +1,8 @@
+{
+	"filename": "vesting2.json",
+	"tokenrecepient": "0x09f801567bcc706f75b0aaf901a3e2fbfc46b9ad",
+	"freezeperiod": 360250,
+	"initialamount": 10,
+	"period": 180125,
+	"amount": 10
+}

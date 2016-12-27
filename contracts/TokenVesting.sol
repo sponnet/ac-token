@@ -3,6 +3,8 @@
  *
  * https://github.com/ethereum/EIPs/issues/20
  */
+pragma solidity ^0.4.2;
+
 contract Token {
 
     /// @return total amount of tokens

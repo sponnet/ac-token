@@ -1,0 +1,13 @@
+{
+
+	"owner1": "0xcfec9edd54af870a4eec838ec337b9da2dd6b1e4",
+	"owner2": "0x43f0cd47b315744b94a6a77e436bc829d607a2d7",
+	"owner3": "0xabd734b1d3a140869f231cc2119a880a3fb0426c",
+	"owner4": "0xa227a71394e88972766acc3cf78a90a7693a854c",
+	"owner5": "0xee110422b086d6930c648786488b305a1fa541d9",
+	"owner6": "0x00c6a80370a95f0e0a66a8fc7058038fc54bfc9a",
+	"owner7": "0xb082ca7b1c15e0482c5ad80d40c9e44db7fb8fee",
+
+	"required": 5,
+	"daily": 1
+}

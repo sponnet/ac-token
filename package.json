@@ -1,6 +1,6 @@
 {
   "name": "arcadetoken",
-  "version": "1.0.0", 
+  "version": "1.0.0",
   "description": "Arcade City Ethereum smart contract for crowdsale and its test suite",
   "main": "index.js",
   "scripts": {
@@ -14,13 +14,15 @@
     "bignumber": "^1.1.0",
     "bignumber.js": "^2.4.0",
     "command-line-args": "^2.1.6",
-    "ethereumjs-testrpc": "2.2.4",
+    "eth-lightwallet": "^2.5.2",
     "ethereumjs-abi": "^0.6.3",
+    "ethereumjs-testrpc": "2.2.4",
     "fs": "0.0.2",
+    "hooked-web3-provider": "^1.0.0",
     "js-sha256": "^0.3.2",
     "mocha": "^3.0.2",
     "request": "^2.74.0",
     "solc": "^0.3.6",
-    "web3": "^0.17.0-alpha"
+    "web3": "^0.15.1"
   }
 }

@@ -225,6 +225,7 @@ contract('ARCToken', function(accounts) {
         value: 1,
       }, function(r, s) {
         try {
+
           done();
         } catch (e) {
           assert.fail('this function should not throw');
@@ -235,8 +236,9 @@ contract('ARCToken', function(accounts) {
 
     it("token_buyer should have 125 ARC tokens", function(done) {
       console.log('tokenbuyer ETH balance=', self.web3.fromWei(self.web3.eth.getBalance(token_buyer), 'ether').toNumber());
-      return arctokencontract.balanceOf.call(token_buyer).then(function(balance) {
+      arctokencontract.balanceOf.call(token_buyer).then(function(balance) {
         assert.equal(balance.valueOf(), 125, "purchase did not work");
+        process.exit();
         done();
       });
     });

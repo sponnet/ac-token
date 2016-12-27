@@ -41,14 +41,17 @@ if (cliOptions.help) {
 	web3.setProvider(new web3.providers.HttpProvider(config_environment.hostname));
 
 	//Config
-	var solidityFile = './contracts/ARCToken.sol';
-	var contractName = 'ARCToken';
+	var solidityFile = './contracts/TokenVesting.sol';
+	var contractName = 'TokenVesting';
 	var solcVersion = 'v0.4.3-nightly.2016.10.24+commit.84b43b91';
 
-	//var multisig = config.multisig;
+	var coinContract = require('./ARCToken.json');
 
-	var constructTypes = ["address", "uint256", "uint256"];
-	var constructArguments = [config.multisig, config.start_block, config.end_block];
+
+	var constructTypes = ["address", "uint", "uint", "uint", "uint", "address"];
+	var constructArguments = [config.tokenrecepient, config.freezeperiod, config.initialamount, config.period, config.amount, coinContract.address];
+
+	console.log('constructor arguments', constructArguments);
 
 	solc.loadRemoteVersion(solcVersion, function(err, solcV) {
 		if (err) {
@@ -68,34 +71,21 @@ if (cliOptions.help) {
 
 			var contract = web3.eth.contract(abi);
 
-			var data = {
-				bytecode: bytecode,
-				abi: abi,
-			};
-
-			var outputFileName = __dirname + '/' + contractName + ".json";
-			console.log('saving to', outputFileName);
-			fs.writeFile(outputFileName, JSON.stringify(data), 'utf8');
-
-
 			if (cliOptions.send_immediately) {
-				console.log('deploying', contractName, "startblock", config.start_block, "endblock", config.end_block);
-				contract.new(config.multisig, config.start_block, config.end_block, {
+				contract.new(config.tokenrecepient, config.freezeperiod, config.initialamount, config.period, config.amount, coinContract.address, {
 					from: config_environment.from,
 					gas: 3500000,
 					data: bytecode
 				}, function(err, myContract) {
 					if (!err) {
 						if (myContract.address) {
-							console.log('ARC Token address', myContract.address);
+							console.log(config.name, ' vesting address', myContract.address);
 
 							var data = {
-								bytecode: bytecode,
-								abi: abi,
 								address: myContract.address
 							};
 
-							var outputFileName = __dirname + '/' + contractName + ".json";
+							var outputFileName = __dirname + '/' + config.filename;
 							console.log('saving to', outputFileName);
 							fs.writeFile(outputFileName, JSON.stringify(data), 'utf8');
 
@@ -106,10 +96,7 @@ if (cliOptions.help) {
 				});
 			} else {
 				console.log('not deploying now, set --send_immediately to send transaction');
-				// var data = contract.new.getData(multisig, config.start_block, config.end_block, {
-				// 	data: bytecode
-				// });
-				// console.log(data);
+
 			}
 		});
 	});
